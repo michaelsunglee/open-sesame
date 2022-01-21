@@ -1,0 +1,39 @@
+<script>
+  var contract_address = "{{ block.settings.contract_address }}"
+  var gated_collection_id = "{{ block.settings.gated_collection.id }}"
+  var shopify_domain = "{{ request.host }}"
+</script>
+<image-gallery data-id="{{ block.id }}">
+  {%- if block.settings.heading -%}
+    <h2>{{ block.settings.heading }}</h2>
+  {%- endif -%}
+
+  <div id="gated-products" class="gallery">
+    <!-- {%- if block.settings.gated_collection -%}
+      <div id="gated-products" hidden>
+      </div>
+    {%- endif -%} -->
+  </div>
+</image-gallery>
+
+{% schema %}
+  {
+    "name": "Gated Products",
+    "target": "section",
+    "stylesheet": "image-gallery.css",
+    "javascript": "image-gallery.js",
+    "templates": ["product", "index"],
+    "settings": [
+      {
+        "type": "collection",
+        "id": "gated_collection",
+        "label": "Gated Collection"
+      },
+      {
+        "type": "text",
+        "id": "contract_address",
+        "label": "NFT Contract Address"
+      }
+    ]
+  }
+{% endschema %}
