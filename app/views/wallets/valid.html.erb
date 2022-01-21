@@ -1,0 +1,6 @@
+<% @products.each do |product| %>
+  <h1><%= product.node.title %></h1>
+  <a href=<%= product.node.online_store_preview_url %>>
+    <img src=<%= product.node.featured_image.src %> style="width:290px;height:380px;"></img>
+  </a>
+<% end %>
